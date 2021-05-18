@@ -12,13 +12,17 @@ be randomly chosen, and you will check your knowledge about them.
 You can mark topics as done, and they will not be chosen.
 
 ## Screenshots
-![Screenshot1](/images/Screenshot1.png)
-![Screenshot2](/images/Screenshot2.png)
-![Screenshot3](/images/Screenshot3.png)
-![Screenshot4](/images/Screenshot4.png)
-![Screenshot5](/images/Screenshot5.png)
 
-## THIS APP IS CURRENTLY IN ALPHA STAGE SO EXPECT BUGS
+<p float="left">
+  <img src="https://user-images.githubusercontent.com/44671856/118702652-7b74ac80-b815-11eb-92cd-7a8d4698eb5a.jpg" width="19%" />
+  <img src="https://user-images.githubusercontent.com/44671856/118702653-7b74ac80-b815-11eb-8119-195a90e674f6.jpg" width="19%" /> 
+  <img src="https://user-images.githubusercontent.com/44671856/118702644-79aae900-b815-11eb-8530-4f22b8f7a395.jpg" width="19%" />
+  <img src="https://user-images.githubusercontent.com/44671856/118702649-7adc1600-b815-11eb-871f-37c2e4bc9b50.jpg" width="19%" />
+  <img src="https://user-images.githubusercontent.com/44671856/118702650-7adc1600-b815-11eb-910d-788c9ba66b1e.jpg" width="19%" />
+</p>
+
+
+THIS APP IS CURRENTLY IN ALPHA STAGE SO EXPECT BUGS
 
 
 ## Getting Started
