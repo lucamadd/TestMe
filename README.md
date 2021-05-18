@@ -2,7 +2,7 @@
 
 A simple application to test yourself for exams
 
-## Usage
+## Description
 Have you ever been anxious about an exam? Let me guess, you studied the entire book,
 took notes, memos and stuff like that, but you still don't feel confident about it.
 
@@ -21,8 +21,20 @@ You can mark topics as done, and they will not be chosen.
   <img src="https://user-images.githubusercontent.com/44671856/118702650-7adc1600-b815-11eb-910d-788c9ba66b1e.jpg" width="19%" />
 </p>
 
+## Usage
+This app is currently in alpha stage so expect bugs. I will soon publish TestMe on Google Play and App Store, but if
+you want you can build the app yourself:
 
-THIS APP IS CURRENTLY IN ALPHA STAGE SO EXPECT BUGS
+### Requirements
+- Flutter SDK  [Download link](https://flutter.dev/docs/get-started/install)
+### Build
+```
+$ git clone https://github.com/lucamadd/TestMe.git
+$ cd TestMe
+$ flutter build apk                          //Build an Android APK file from your app.
+$ flutter build ios                          //Build an iOS application bundle (Mac OS X host only).
+```
+
 
 
 ## Getting Started
