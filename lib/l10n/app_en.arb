@@ -1,0 +1,34 @@
+{
+  "@@locale": "en",
+
+  "add_row_main_title": "Add Topic",
+  "add_row_main_title2": "Update Topic",
+  "add_row_text_title_placeholder": "Title",
+  "add_row_text_title_error": "Please enter a topic title",
+  "add_row_text_priority_placeholder": "Priority",
+  "add_row_text_priority_error": "Please select a priority level",
+  "add_row_button_add": "Add",
+  "add_row_button_update": "Save",
+  "add_row_button_delete": "Delete",
+  "add_row_priorities_1": "Low",
+  "add_row_priorities_2": "Medium",
+  "add_row_priorities_3": "High",
+  "testme_screen_counter": "{completed} of {total}",
+  "@testme_screen_counter": {
+    "placeholders": {
+      "completed": {
+        "type": "String",
+        "example": "0"
+      },
+      "total": {
+        "type": "String",
+        "example": "0"
+      }
+    }
+  },
+  "testme_screen_snackbar_text": "Please add at least one topic!",
+  "testme_screen_no_topic_available": "No topics available",
+  "testme_screen_confirm_delete": "All topics will be deleted.",
+  "testme_screen_confirm_delete_cancel": "CANCEL",
+  "testme_screen_confirm_delete_confirm": "CONFIRM"
+}
