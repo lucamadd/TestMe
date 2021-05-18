@@ -1,6 +1,25 @@
-# test_me
+# TestMe
 
-A simple application to test yourself about an exam
+A simple application to test yourself for exams
+
+## Usage
+Have you ever been anxious about an exam? Let me guess, you studied the entire book,
+took notes, memos and stuff like that, but you still don't feel confident about it.
+
+So take a break, install TestMe and write question topics that could be asked. Topics will
+be randomly chosen, and you will check your knowledge about them.
+
+You can mark topics as done, and they will not be chosen.
+
+## Screenshots
+![Screenshot1](/images/Screenshot1.png)
+![Screenshot2](/images/Screenshot2.png)
+![Screenshot3](/images/Screenshot3.png)
+![Screenshot4](/images/Screenshot4.png)
+![Screenshot5](/images/Screenshot5.png)
+
+## THIS APP IS CURRENTLY IN ALPHA STAGE SO EXPECT BUGS
+
 
 ## Getting Started
 
