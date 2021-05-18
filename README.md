@@ -23,7 +23,7 @@ You can mark topics as done, and they will not be chosen.
 
 ## Usage
 This app is currently in alpha stage so expect bugs. I will soon publish TestMe on Google Play and App Store, but if
-you want you can build the app yourself:
+you want you can enjoy a free ad-free experience by building the app yourself:
 
 ### Requirements
 - Flutter SDK  [Download link](https://flutter.dev/docs/get-started/install)
