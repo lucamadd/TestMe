@@ -2,10 +2,11 @@ class Topic {
   int id;
   String title;
   String priority;
+  String notes;
   int status;
 
-  Topic({this.title, this.priority, this.status});
-  Topic.withId({this.id, this.title, this.priority, this.status});
+  Topic({this.title, this.priority, this.notes, this.status});
+  Topic.withId({this.id, this.title, this.priority, this.notes, this.status});
 
   Map<String, dynamic> toMap() {
     final map = Map<String, dynamic>();
@@ -15,6 +16,7 @@ class Topic {
 
     map['title'] = title;
     map['priority'] = priority;
+    map['notes'] = notes;
     map['status'] = status;
     return map;
   }
@@ -24,6 +26,7 @@ class Topic {
         id: map['id'],
         title: map['title'],
         priority: map['priority'],
+        notes: map['notes'],
         status: map['status']);
   }
 }

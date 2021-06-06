@@ -1,12 +1,14 @@
 {
   "@@locale": "it",
 
+  "testme_master_version_info": "versione 0.2.0",
   "add_row_main_title": "Aggiungi argomento",
   "add_row_main_title2": "Modifica argomento",
   "add_row_text_title_placeholder": "Titolo",
   "add_row_text_title_error": "Inserisci un titolo",
   "add_row_text_priority_placeholder": "Priorità",
   "add_row_text_priority_error": "Scegli un livello di priorità",
+  "add_row_text_page_placeholder": "Note (facoltativo)",
   "add_row_button_add": "Aggiungi",
   "add_row_button_update": "Salva",
   "add_row_button_delete": "Elimina",
@@ -30,5 +32,15 @@
   "testme_screen_no_topic_available": "Nessun argomento disponibile",
   "testme_screen_confirm_delete": "Tutti gli argomenti verranno cancellati.",
   "testme_screen_confirm_delete_cancel": "ANNULLA",
-  "testme_screen_confirm_delete_confirm": "CONFERMA"
+  "testme_screen_confirm_delete_confirm": "CONFERMA",
+  "info_page_title": "Impostazioni",
+  "info_page_section1": "Applicazione",
+  "info_page_section2": "Generali",
+  "info_page_setting1": "Tema scuro",
+  "info_page_setting2": "Importa da file .txt",
+  "info_page_setting3": "Lascia feedback",
+  "info_page_setting4": "Info",
+  "info_page_toast_not_implemented": "Presto disponibile!",
+  "info_page_about": "TestMe è un'applicazione open source sviluppata con Flutter. Puoi dare un'occhiata al codice sorgente su github.com/lucamadd/TestMe"
+
 }

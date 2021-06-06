@@ -1,12 +1,14 @@
 {
   "@@locale": "en",
 
+  "testme_master_version_info": "version 0.2.0",
   "add_row_main_title": "Add Topic",
   "add_row_main_title2": "Update Topic",
   "add_row_text_title_placeholder": "Title",
   "add_row_text_title_error": "Please enter a topic title",
   "add_row_text_priority_placeholder": "Priority",
   "add_row_text_priority_error": "Please select a priority level",
+  "add_row_text_page_placeholder": "Notes (optional)",
   "add_row_button_add": "Add",
   "add_row_button_update": "Save",
   "add_row_button_delete": "Delete",
@@ -30,5 +32,14 @@
   "testme_screen_no_topic_available": "No topics available",
   "testme_screen_confirm_delete": "All topics will be deleted.",
   "testme_screen_confirm_delete_cancel": "CANCEL",
-  "testme_screen_confirm_delete_confirm": "CONFIRM"
+  "testme_screen_confirm_delete_confirm": "CONFIRM",
+  "info_page_title": "Settings",
+  "info_page_section1": "Application",
+  "info_page_section2": "General",
+  "info_page_setting1": "Dark theme",
+  "info_page_setting2": "Import from .txt file",
+  "info_page_setting3": "Leave feedback",
+  "info_page_setting4": "Info",
+  "info_page_toast_not_implemented": "Coming soon!",
+  "info_page_about": "TestMe is an open source application developed with Flutter. You can take a look at the source code at github.com/lucamadd/TestMe"
 }

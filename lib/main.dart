@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:test_me/onBoarding_one/onboarding_one.dart';
+import 'package:feedback/feedback.dart';
 import 'package:test_me/screens/testme_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:test_me/helpers/utils.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    BetterFeedback(
+      child: MyApp(),
+    ),
+  );
 }
 
 ThemeData buildTheme() {
@@ -19,6 +26,11 @@ ThemeData buildTheme() {
 }
 
 class MyApp extends StatelessWidget {
+  Future<InitializationStatus> _initGoogleMobileAds() {
+    // TODO: Initialize Google Mobile Ads SDK
+    return MobileAds.instance.initialize();
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

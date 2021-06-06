@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:test_me/ad_manager.dart';
 import 'package:test_me/helpers/database_helper.dart';
 import 'package:test_me/models/topic_model.dart';
 
@@ -18,8 +20,14 @@ class _AddRowScreenState extends State<AddRowScreen> {
   final _formKey = GlobalKey<FormState>();
   String _title = '';
   String _priority;
+  String _notes;
 
   List<String> _priorities = [];
+  // TODO: Add _bannerAd
+  BannerAd _bannerAd;
+
+  // TODO: Add _isBannerAdReady
+  bool _isBannerAdReady = false;
 
   @override
   void initState() {
@@ -27,7 +35,26 @@ class _AddRowScreenState extends State<AddRowScreen> {
     if (widget.topic != null) {
       _title = widget.topic.title;
       _priority = widget.topic.priority;
+      _notes = widget.topic.notes;
     }
+    _bannerAd = BannerAd(
+      adUnitId: AdManager.bannerAdUnitId2,
+      request: AdRequest(),
+      size: AdSize.banner,
+      listener: AdListener(
+        onAdLoaded: (_) {
+          setState(() {
+            _isBannerAdReady = true;
+          });
+        },
+        onAdFailedToLoad: (ad, err) {
+          print('Failed to load a banner ad: ${err.message}');
+          _isBannerAdReady = false;
+          ad.dispose();
+        },
+      ),
+    );
+    _bannerAd.load();
   }
 
   _delete() {
@@ -39,9 +66,9 @@ class _AddRowScreenState extends State<AddRowScreen> {
   _submit() {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      print('$_title, $_priority');
+      print('$_title, $_priority, $_notes');
 
-      Topic topic = Topic(title: _title, priority: _priority);
+      Topic topic = Topic(title: _title, priority: _priority, notes: _notes);
       if (widget.topic == null) {
         //insert task into DB
         topic.status = 0;
@@ -170,6 +197,29 @@ class _AddRowScreenState extends State<AddRowScreen> {
                         value: _priority,
                       ),
                     ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 20.0),
+                      child: TextFormField(
+                        maxLines: null,
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontFamily: 'Manrope',
+                          fontWeight: FontWeight.w600,
+                        ),
+                        decoration: InputDecoration(
+                            labelText: AppLocalizations.of(context)
+                                .add_row_text_page_placeholder,
+                            labelStyle: TextStyle(
+                              fontSize: 18.0,
+                              fontFamily: 'Manrope',
+                              fontWeight: FontWeight.w600,
+                            ),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0))),
+                        onSaved: (input) => _notes = input,
+                        initialValue: _notes,
+                      ),
+                    ),
                     Container(
                       margin: EdgeInsets.symmetric(vertical: 20.0),
                       height: 60.0,
@@ -216,7 +266,17 @@ class _AddRowScreenState extends State<AddRowScreen> {
                                       fontSize: 20.0)),
                             ),
                           )
-                        : SizedBox.shrink(),
+                        : SizedBox
+                            .shrink(), // TODO: Display a banner when ready
+                    if (_isBannerAdReady)
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: Container(
+                          width: _bannerAd.size.width.toDouble(),
+                          height: _bannerAd.size.height.toDouble(),
+                          child: AdWidget(ad: _bannerAd),
+                        ),
+                      ),
                   ],
                 ),
               ),
@@ -225,5 +285,12 @@ class _AddRowScreenState extends State<AddRowScreen> {
         ),
       ),
     ));
+  }
+
+  @override
+  void dispose() {
+    // TODO: Dispose a BannerAd object
+    _bannerAd.dispose();
+    super.dispose();
   }
 }

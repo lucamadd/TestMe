@@ -1,11 +1,18 @@
+import 'dart:io';
+import 'dart:typed_data';
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:test_me/helpers/database_helper.dart';
+import 'package:test_me/info_page.dart';
 import 'package:test_me/models/topic_model.dart';
 import 'package:test_me/screens/add_row.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../ad_manager.dart';
 
 class TestMeScreen extends StatefulWidget {
   @override
@@ -15,11 +22,37 @@ class TestMeScreen extends StatefulWidget {
 class _TestMeScreenState extends State<TestMeScreen> {
   Future<List<Topic>> _topicList;
   int _topics = 0;
+  GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
+  // TODO: Add _bannerAd
+  BannerAd _bannerAd;
+
+  // TODO: Add _isBannerAdReady
+  bool _isBannerAdReady = false;
 
   @override
   void initState() {
     super.initState();
     _updateTopicList();
+    // TODO: Initialize _bannerAd
+    _bannerAd = BannerAd(
+      adUnitId: AdManager.bannerAdUnitId,
+      request: AdRequest(),
+      size: AdSize.banner,
+      listener: AdListener(
+        onAdLoaded: (_) {
+          setState(() {
+            _isBannerAdReady = true;
+          });
+        },
+        onAdFailedToLoad: (ad, err) {
+          print('Failed to load a banner ad: ${err.message}');
+          _isBannerAdReady = false;
+          ad.dispose();
+        },
+      ),
+    );
+
+    _bannerAd.load();
   }
 
   _updateTopicList() {
@@ -44,7 +77,10 @@ class _TestMeScreenState extends State<TestMeScreen> {
                       ? TextDecoration.none
                       : TextDecoration.lineThrough),
             ),
-            subtitle: Text(topic.priority,
+            subtitle: Text(
+                topic.notes.trim().isEmpty
+                    ? topic.priority
+                    : topic.priority + ' • ' + topic.notes,
                 style: TextStyle(
                     fontFamily: 'Manrope',
                     fontWeight: FontWeight.w600,
@@ -78,6 +114,7 @@ class _TestMeScreenState extends State<TestMeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _drawerKey,
       floatingActionButton: FloatingActionButton.extended(
         elevation: 4.0,
         icon: const Icon(Icons.menu_book_outlined),
@@ -97,10 +134,24 @@ class _TestMeScreenState extends State<TestMeScreen> {
           } else {
             var dialogTopic;
             List<Topic> currentTopicList = await _topicList;
-            currentTopicList.shuffle();
+            List<Topic> expandedTopicList = <Topic>[];
             for (var i = 0; i < currentTopicList.length; i++) {
-              if (currentTopicList[i].status == 0) {
-                dialogTopic = currentTopicList[i];
+              if (currentTopicList[i].priority ==
+                  AppLocalizations.of(context).add_row_priorities_3) {
+                expandedTopicList.add(currentTopicList[i]);
+                expandedTopicList.add(currentTopicList[i]);
+              } else if (currentTopicList[i].priority ==
+                  AppLocalizations.of(context).add_row_priorities_2) {
+                expandedTopicList.add(currentTopicList[i]);
+              }
+            }
+            for (var i = 0; i < currentTopicList.length; i++) {
+              expandedTopicList.add(currentTopicList[i]);
+            }
+            expandedTopicList.shuffle();
+            for (var i = 0; i < expandedTopicList.length; i++) {
+              if (expandedTopicList[i].status == 0) {
+                dialogTopic = expandedTopicList[i];
                 break;
               }
               if (dialogTopic == null) {
@@ -116,20 +167,31 @@ class _TestMeScreenState extends State<TestMeScreen> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      title: SizedBox(),
+                      title: null,
                       content: Text(
                         dialogTopic.title,
                         style: TextStyle(
                             fontFamily: 'Manrope',
-                            fontWeight: FontWeight.w900,
+                            fontWeight: FontWeight.w600,
                             fontSize: 20),
                       ),
                       actions: <Widget>[
+                        // TODO: Display a banner when ready
+                        if (_isBannerAdReady)
+                          Align(
+                            alignment: Alignment.topCenter,
+                            child: Container(
+                              width: _bannerAd.size.width.toDouble(),
+                              height: _bannerAd.size.height.toDouble(),
+                              child: AdWidget(ad: _bannerAd),
+                            ),
+                          ),
                         TextButton(
                           child: Text(
                             'OK',
                             style: TextStyle(
                                 fontFamily: 'Manrope',
+                                fontSize: 18,
                                 fontWeight: FontWeight.w900),
                           ),
                           onPressed: () {
@@ -138,7 +200,7 @@ class _TestMeScreenState extends State<TestMeScreen> {
                             _updateTopicList();
                             Navigator.of(context).pop();
                           },
-                        )
+                        ),
                       ],
                     ));
           }
@@ -152,8 +214,14 @@ class _TestMeScreenState extends State<TestMeScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             IconButton(
-              icon: Icon(Icons.menu),
-              onPressed: () {},
+              icon: Icon(Icons.settings),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => InfoPage(),
+                    ));
+              },
             ),
             new Row(
               mainAxisSize: MainAxisSize.max,
@@ -167,13 +235,13 @@ class _TestMeScreenState extends State<TestMeScreen> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            title: SizedBox(),
+                            title: null,
                             content: Text(
                               AppLocalizations.of(context)
                                   .testme_screen_confirm_delete,
                               style: TextStyle(
                                   fontFamily: 'Manrope',
-                                  fontWeight: FontWeight.w900,
+                                  fontWeight: FontWeight.w600,
                                   fontSize: 20),
                             ),
                             actions: [
@@ -268,7 +336,10 @@ class _TestMeScreenState extends State<TestMeScreen> {
                             color: Colors.grey,
                             fontSize: 20.0,
                             fontWeight: FontWeight.w600),
-                      )
+                      ),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                      ),
                     ],
                   ),
                 );
@@ -279,5 +350,12 @@ class _TestMeScreenState extends State<TestMeScreen> {
         },
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    // TODO: Dispose a BannerAd object
+    _bannerAd.dispose();
+    super.dispose();
   }
 }

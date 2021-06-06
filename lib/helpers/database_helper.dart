@@ -14,6 +14,7 @@ class DatabaseHelper {
   String colId = 'id';
   String colTitle = 'title';
   String colPriority = 'priority';
+  String colNotes = 'notes';
   String colStatus = 'status';
 
   Future<Database> get db async {
@@ -32,7 +33,7 @@ class DatabaseHelper {
 
   void _createDb(Database db, int version) async {
     await db.execute(
-        'CREATE TABLE $topicTable($colId INTEGER PRIMARY KEY AUTOINCREMENT, $colTitle TEXT, $colPriority TEXT, $colStatus INTEGER)');
+        'CREATE TABLE $topicTable($colId INTEGER PRIMARY KEY AUTOINCREMENT, $colTitle TEXT, $colPriority TEXT, $colNotes TEXT, $colStatus INTEGER)');
   }
 
   Future<List<Map<String, dynamic>>> getTopicMapList() async {
