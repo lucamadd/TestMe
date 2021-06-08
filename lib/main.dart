@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:provider/provider.dart';
 import 'package:test_me/onBoarding_one/onboarding_one.dart';
 import 'package:feedback/feedback.dart';
 import 'package:test_me/screens/testme_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:test_me/helpers/utils.dart';
+import 'package:test_me/theme_manager.dart';
 
 void main() {
-  runApp(
-    BetterFeedback(
-      child: MyApp(),
-    ),
-  );
+  return runApp(ChangeNotifierProvider<ThemeNotifier>(
+    create: (_) => new ThemeNotifier(),
+    child: BetterFeedback(child: MyApp()),
+  ));
 }
 
 ThemeData buildTheme() {
@@ -40,17 +41,15 @@ class MyApp extends StatelessWidget {
       statusBarIconBrightness: Brightness.dark,
     ));
     */
-    return MaterialApp(
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      title: 'TestMe',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          fontFamily: 'Manrope',
-          primarySwatch: createMaterialColor(Color(0xff5e65f3)),
-          textSelectionTheme:
-              TextSelectionThemeData(cursorColor: Colors.black)),
-      home: TestMeScreen(),
+    return Consumer<ThemeNotifier>(
+      builder: (context, theme, _) => MaterialApp(
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        title: 'TestMe',
+        debugShowCheckedModeBanner: false,
+        theme: theme.getTheme(),
+        home: TestMeScreen(theme: theme),
+      ),
     );
   }
 }

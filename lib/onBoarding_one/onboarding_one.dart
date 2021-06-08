@@ -13,7 +13,9 @@ class _OnBoardingOneState extends State<OnBoardingOne> {
 
   void _onIntroEnd(context) {
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => TestMeScreen()),
+      MaterialPageRoute(
+          builder: (_) => TestMeScreen(
+              theme: null)), //TODO CAMBIARE NULL COL TEMA PASSATO DAL MAIN
     );
   }
 

@@ -1,7 +1,7 @@
 {
   "@@locale": "en",
 
-  "testme_master_version_info": "version 0.2.0",
+  "testme_master_version_info": "version 0.3.0",
   "add_row_main_title": "Add Topic",
   "add_row_main_title2": "Update Topic",
   "add_row_text_title_placeholder": "Title",
@@ -41,5 +41,6 @@
   "info_page_setting3": "Leave feedback",
   "info_page_setting4": "Info",
   "info_page_toast_not_implemented": "Coming soon!",
-  "info_page_about": "TestMe is an open source application developed with Flutter. You can take a look at the source code at github.com/lucamadd/TestMe"
+  "info_page_about": "TestMe is an open source application developed with Flutter. You can take a look at the source code at github.com/lucamadd/TestMe",
+  "info_page_about_support": "Thank you for downloading TestMe! Ad banners support me, but if you want an ad-free experience you can simply use the app when you're offline."
 }

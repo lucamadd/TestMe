@@ -27,6 +27,7 @@
               android:name="io.flutter.embedding.android.SplashScreenDrawable"
               android:resource="@drawable/launch_background"
               />
+              
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -41,4 +42,10 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-9645685931978775~7776034508"/>
     </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <queries>
+        <intent> 
+            <action android:name="android.intent.action.SENDTO" /> <data android:scheme="mailto" /> 
+        </intent> 
+    </queries>
 </manifest>

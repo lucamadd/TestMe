@@ -11,15 +11,21 @@ import 'package:test_me/info_page.dart';
 import 'package:test_me/models/topic_model.dart';
 import 'package:test_me/screens/add_row.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:test_me/theme_manager.dart';
 
 import '../ad_manager.dart';
 
 class TestMeScreen extends StatefulWidget {
+  final ThemeNotifier theme;
+
+  TestMeScreen({this.theme});
+
   @override
   _TestMeScreenState createState() => _TestMeScreenState();
 }
 
 class _TestMeScreenState extends State<TestMeScreen> {
+  ThemeNotifier _theme;
   Future<List<Topic>> _topicList;
   int _topics = 0;
   GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
@@ -31,6 +37,9 @@ class _TestMeScreenState extends State<TestMeScreen> {
 
   @override
   void initState() {
+    if (widget.theme != null) {
+      _theme = widget.theme;
+    }
     super.initState();
     _updateTopicList();
     // TODO: Initialize _bannerAd
@@ -114,97 +123,128 @@ class _TestMeScreenState extends State<TestMeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       key: _drawerKey,
-      floatingActionButton: FloatingActionButton.extended(
-        elevation: 4.0,
-        icon: const Icon(Icons.menu_book_outlined),
-        label: const Text(
-          'TEST!',
-          style: TextStyle(fontWeight: FontWeight.w900),
+      floatingActionButton: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              offset: Offset(0, 4),
+              blurRadius: 6,
+            ),
+          ],
+          borderRadius: BorderRadius.circular(90),
+          gradient:
+              LinearGradient(colors: [Color(0xff858df8), Color(0xff5e65f3)]),
         ),
-        onPressed: () async {
-          if (_topics == 0) {
-            final _snackBar = SnackBar(
-              content: Text(
-                  AppLocalizations.of(context).testme_screen_snackbar_text),
-              padding: EdgeInsets.all(5.0),
-              duration: Duration(seconds: 1),
-            );
-            ScaffoldMessenger.of(context).showSnackBar(_snackBar);
-          } else {
-            var dialogTopic;
-            List<Topic> currentTopicList = await _topicList;
-            List<Topic> expandedTopicList = <Topic>[];
-            for (var i = 0; i < currentTopicList.length; i++) {
-              if (currentTopicList[i].priority ==
-                  AppLocalizations.of(context).add_row_priorities_3) {
-                expandedTopicList.add(currentTopicList[i]);
-                expandedTopicList.add(currentTopicList[i]);
-              } else if (currentTopicList[i].priority ==
-                  AppLocalizations.of(context).add_row_priorities_2) {
+        child: FloatingActionButton.extended(
+          highlightElevation: 1,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          icon: const Icon(
+            Icons.menu_book_outlined,
+            color: Colors.white,
+          ),
+          label: const Text(
+            'TEST!',
+            style: TextStyle(fontWeight: FontWeight.w900, color: Colors.white),
+          ),
+          onPressed: () async {
+            if (_topics == 0) {
+              final _snackBar = SnackBar(
+                content: Text(
+                  AppLocalizations.of(context).testme_screen_snackbar_text,
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: 'Manrope',
+                      fontWeight: FontWeight.w700),
+                ),
+                padding: EdgeInsets.all(5.0),
+                duration: Duration(seconds: 1),
+              );
+              ScaffoldMessenger.of(context).showSnackBar(_snackBar);
+            } else {
+              var dialogTopic;
+              List<Topic> currentTopicList = await _topicList;
+              List<Topic> expandedTopicList = <Topic>[];
+              for (var i = 0; i < currentTopicList.length; i++) {
+                if (currentTopicList[i].priority ==
+                    AppLocalizations.of(context).add_row_priorities_3) {
+                  expandedTopicList.add(currentTopicList[i]);
+                  expandedTopicList.add(currentTopicList[i]);
+                } else if (currentTopicList[i].priority ==
+                    AppLocalizations.of(context).add_row_priorities_2) {
+                  expandedTopicList.add(currentTopicList[i]);
+                }
+              }
+              for (var i = 0; i < currentTopicList.length; i++) {
                 expandedTopicList.add(currentTopicList[i]);
               }
-            }
-            for (var i = 0; i < currentTopicList.length; i++) {
-              expandedTopicList.add(currentTopicList[i]);
-            }
-            expandedTopicList.shuffle();
-            for (var i = 0; i < expandedTopicList.length; i++) {
-              if (expandedTopicList[i].status == 0) {
-                dialogTopic = expandedTopicList[i];
-                break;
+              expandedTopicList.shuffle();
+              for (var i = 0; i < expandedTopicList.length; i++) {
+                if (expandedTopicList[i].status == 0) {
+                  dialogTopic = expandedTopicList[i];
+                  break;
+                }
+                if (dialogTopic == null) {
+                  dialogTopic = new Topic();
+                  dialogTopic.title = AppLocalizations.of(context)
+                      .testme_screen_no_topic_available;
+                }
               }
-              if (dialogTopic == null) {
-                dialogTopic = new Topic();
-                dialogTopic.title = AppLocalizations.of(context)
-                    .testme_screen_no_topic_available;
-              }
-            }
-            showDialog(
-                barrierDismissible: false,
-                context: context,
-                builder: (_) => new AlertDialog(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      title: null,
-                      content: Text(
-                        dialogTopic.title,
-                        style: TextStyle(
-                            fontFamily: 'Manrope',
-                            fontWeight: FontWeight.w600,
-                            fontSize: 20),
-                      ),
-                      actions: <Widget>[
-                        // TODO: Display a banner when ready
-                        if (_isBannerAdReady)
-                          Align(
-                            alignment: Alignment.topCenter,
-                            child: Container(
-                              width: _bannerAd.size.width.toDouble(),
-                              height: _bannerAd.size.height.toDouble(),
-                              child: AdWidget(ad: _bannerAd),
-                            ),
-                          ),
-                        TextButton(
-                          child: Text(
-                            'OK',
-                            style: TextStyle(
-                                fontFamily: 'Manrope',
-                                fontSize: 18,
-                                fontWeight: FontWeight.w900),
-                          ),
-                          onPressed: () {
-                            dialogTopic.status = 1;
-                            DatabaseHelper.instance.updateTopic(dialogTopic);
-                            _updateTopicList();
-                            Navigator.of(context).pop();
-                          },
+              showDialog(
+                  barrierDismissible: false,
+                  context: context,
+                  builder: (_) => new AlertDialog(
+                        elevation: 9,
+                        insetPadding: EdgeInsets.symmetric(horizontal: 20),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                      ],
-                    ));
-          }
-        },
+                        title: null,
+                        content: Text(
+                          dialogTopic.title,
+                          style: TextStyle(
+                              fontFamily: 'Manrope',
+                              fontWeight: FontWeight.w600,
+                              fontSize: 20),
+                        ),
+                        actions: <Widget>[
+                          // TODO: Display a banner when ready
+                          if (_isBannerAdReady)
+                            Align(
+                              alignment: Alignment.topCenter,
+                              child: Container(
+                                width: _bannerAd.size.width.toDouble(),
+                                height: _bannerAd.size.height.toDouble(),
+                                child: AdWidget(ad: _bannerAd),
+                              ),
+                            ),
+                          TextButton(
+                            child: Padding(
+                              padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                              child: Text(
+                                'OK',
+                                style: TextStyle(
+                                    color: Theme.of(context).primaryColor,
+                                    fontFamily: 'Manrope',
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w900),
+                              ),
+                            ),
+                            onPressed: () {
+                              dialogTopic.status = 1;
+                              DatabaseHelper.instance.updateTopic(dialogTopic);
+                              _updateTopicList();
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      ));
+            }
+          },
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
@@ -219,7 +259,7 @@ class _TestMeScreenState extends State<TestMeScreen> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => InfoPage(),
+                      builder: (_) => InfoPage(theme: _theme),
                     ));
               },
             ),
@@ -253,6 +293,7 @@ class _TestMeScreenState extends State<TestMeScreen> {
                                   AppLocalizations.of(context)
                                       .testme_screen_confirm_delete_cancel,
                                   style: TextStyle(
+                                      color: Theme.of(context).primaryColor,
                                       fontFamily: 'Manrope',
                                       fontWeight: FontWeight.w900),
                                 ),
@@ -267,6 +308,7 @@ class _TestMeScreenState extends State<TestMeScreen> {
                                   AppLocalizations.of(context)
                                       .testme_screen_confirm_delete_confirm,
                                   style: TextStyle(
+                                      color: Theme.of(context).primaryColor,
                                       fontFamily: 'Manrope',
                                       fontWeight: FontWeight.w900),
                                 ),
@@ -320,7 +362,6 @@ class _TestMeScreenState extends State<TestMeScreen> {
                         'TestMe',
                         style: TextStyle(
                             fontFamily: 'Manrope',
-                            color: Colors.black,
                             fontSize: 40.0,
                             fontWeight: FontWeight.w900),
                       ),

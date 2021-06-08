@@ -10,6 +10,7 @@ class _AboutScreenState extends State<AboutScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       body: Center(
         child: Column(
           children: <Widget>[
@@ -21,16 +22,35 @@ class _AboutScreenState extends State<AboutScreen> {
                 style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.w900)),
             Text(
               AppLocalizations.of(context).testme_master_version_info,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  color: Theme.of(context).accentColor),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(40, 30, 40, 0),
+              padding: EdgeInsets.fromLTRB(40, 30, 40, 40),
               child: Text(
                 AppLocalizations.of(context).info_page_about,
                 textAlign: TextAlign.justify,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                    color: Theme.of(context).accentColor),
               ),
             ),
+            Text('SupportMe',
+                style: TextStyle(fontSize: 28.0, fontWeight: FontWeight.w900)),
+            Padding(
+              padding: EdgeInsets.fromLTRB(40, 10, 40, 0),
+              child: Text(
+                AppLocalizations.of(context).info_page_about_support,
+                textAlign: TextAlign.justify,
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                    color: Theme.of(context).accentColor),
+              ),
+            )
           ],
         ),
       ),
