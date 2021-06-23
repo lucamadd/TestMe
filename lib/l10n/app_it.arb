@@ -1,7 +1,7 @@
 {
   "@@locale": "it",
 
-  "testme_master_version_info": "versione 0.4.0",
+  "testme_master_version_info": "versione 0.4.1",
   "add_row_main_title": "Aggiungi argomento",
   "add_row_main_title2": "Modifica argomento",
   "add_row_text_title_placeholder": "Titolo",

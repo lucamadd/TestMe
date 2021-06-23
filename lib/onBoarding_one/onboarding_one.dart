@@ -80,7 +80,7 @@ class _OnBoardingOneState extends State<OnBoardingOne> {
                     animation: DelayedAnimations.SLIDE_FROM_BOTTOM,
                     child: Text(
                       AppLocalizations.of(context).intro_page_one_title,
-                      textAlign: TextAlign.justify,
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.w900,
@@ -94,7 +94,7 @@ class _OnBoardingOneState extends State<OnBoardingOne> {
                       padding: EdgeInsets.fromLTRB(16, 40, 16, 0),
                       child: Text(
                         AppLocalizations.of(context).intro_page_one_body,
-                        textAlign: TextAlign.justify,
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 19,
                             fontWeight: FontWeight.w600,
@@ -117,7 +117,7 @@ class _OnBoardingOneState extends State<OnBoardingOne> {
                       padding: EdgeInsets.fromLTRB(16, 10, 16, 0),
                       child: Text(
                         AppLocalizations.of(context).intro_page_two_body,
-                        textAlign: TextAlign.justify,
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 19,
                             fontWeight: FontWeight.w600,
@@ -132,7 +132,7 @@ class _OnBoardingOneState extends State<OnBoardingOne> {
                       padding: EdgeInsets.fromLTRB(16, 40, 16, 0),
                       child: Text(
                         AppLocalizations.of(context).intro_page_two_body2,
-                        textAlign: TextAlign.justify,
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 19,
                             fontWeight: FontWeight.w600,
@@ -165,7 +165,7 @@ class _OnBoardingOneState extends State<OnBoardingOne> {
                       padding: EdgeInsets.fromLTRB(16, 10, 16, 0),
                       child: Text(
                         AppLocalizations.of(context).intro_page_three_body,
-                        textAlign: TextAlign.justify,
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 19,
                             fontWeight: FontWeight.w600,
@@ -180,7 +180,7 @@ class _OnBoardingOneState extends State<OnBoardingOne> {
                       padding: EdgeInsets.fromLTRB(16, 20, 16, 0),
                       child: Text(
                         AppLocalizations.of(context).intro_page_three_body2,
-                        textAlign: TextAlign.justify,
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 19,
                             fontWeight: FontWeight.w600,
@@ -213,7 +213,7 @@ class _OnBoardingOneState extends State<OnBoardingOne> {
                       padding: EdgeInsets.fromLTRB(16, 10, 16, 0),
                       child: Text(
                         AppLocalizations.of(context).intro_page_four_body,
-                        textAlign: TextAlign.justify,
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 19,
                             fontWeight: FontWeight.w600,
@@ -228,7 +228,7 @@ class _OnBoardingOneState extends State<OnBoardingOne> {
                       padding: EdgeInsets.fromLTRB(16, 20, 16, 0),
                       child: Text(
                         AppLocalizations.of(context).intro_page_four_body2,
-                        textAlign: TextAlign.justify,
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 19,
                             fontWeight: FontWeight.w600,
@@ -261,7 +261,7 @@ class _OnBoardingOneState extends State<OnBoardingOne> {
                       padding: EdgeInsets.fromLTRB(16, 10, 16, 0),
                       child: Text(
                         AppLocalizations.of(context).intro_page_five_body,
-                        textAlign: TextAlign.justify,
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 19,
                             fontWeight: FontWeight.w600,
@@ -294,7 +294,7 @@ class _OnBoardingOneState extends State<OnBoardingOne> {
                       padding: EdgeInsets.fromLTRB(16, 10, 16, 0),
                       child: Text(
                         AppLocalizations.of(context).intro_page_six_body,
-                        textAlign: TextAlign.justify,
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 19,
                             fontWeight: FontWeight.w600,
@@ -309,7 +309,7 @@ class _OnBoardingOneState extends State<OnBoardingOne> {
                       padding: EdgeInsets.fromLTRB(16, 30, 16, 0),
                       child: Text(
                         AppLocalizations.of(context).intro_page_six_body2,
-                        textAlign: TextAlign.justify,
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w600,
