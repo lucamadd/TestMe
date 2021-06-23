@@ -1,7 +1,7 @@
 {
   "@@locale": "it",
 
-  "testme_master_version_info": "versione 0.3.0",
+  "testme_master_version_info": "versione 0.4.0",
   "add_row_main_title": "Aggiungi argomento",
   "add_row_main_title2": "Modifica argomento",
   "add_row_text_title_placeholder": "Titolo",
@@ -38,10 +38,27 @@
   "info_page_section2": "Generali",
   "info_page_setting1": "Tema scuro",
   "info_page_setting2": "Importa da file .txt",
+  "info_page_setting2_5": "Guarda tutorial",
   "info_page_setting3": "Lascia feedback",
   "info_page_setting4": "Info",
   "info_page_toast_not_implemented": "Presto disponibile!",
   "info_page_about": "TestMe è un'applicazione open source sviluppata con Flutter. Puoi dare un'occhiata al codice sorgente su github.com/lucamadd/TestMe",
-  "info_page_about_support": "Grazie per aver scaricato TestMe! Le unità pubblicitarie presenti nell'app aiutano a supportarmi, ma se vuoi rimuoverle ti basta utilizzare l'app quando sei offline."
+  "info_page_about_support": "Grazie per aver scaricato TestMe! Le unità pubblicitarie presenti nell'app aiutano a supportarmi, ma se vuoi rimuoverle ti basta utilizzare l'app quando sei offline.\n\n In questo modo oltre a nascondere le pubblicità manterrai un livello di concentrazione più alto e avrai meno distrazioni.",
+  "intro_page_one_title": "Benvenuto in TestMe",
+  "intro_page_one_body": "TestMe è il tuo assistente personale per la preparazione di esami e interrogazioni.\n\nQuesto breve tutorial ti guiderà nell'utilizzo dell'app.",
+  "intro_page_two_body": "In TestMe puoi creare una lista di argomenti. Ogni argomento corrisponde a una domanda che potrebbe essere posta all'esame.",
+  "intro_page_two_body2": "Una volta aggiunta la lista di argomenti, TestMe ne estrarrà uno casualmente, e potrai verificare la tua preparazione su quell'argomento.",
+  "intro_page_three_body": "Questa è la schermata principale dell'applicazione.\nNella parte superiore dello schermo puoi visualizzare il numero totale di argomenti",
+  "intro_page_three_body2": "Premi sul pulsante \"+\" per aggiungere un argomento.",
+  "intro_page_four_body": "Quando aggiungi un argomento, puoi impostare un livello di priorità(alto, medio, basso). Un livello più alto di priorità indica una maggiore probabilità che quell'argomento venga scelto.",
+  "intro_page_four_body2": "Eventualmente puoi aggiungere delle note, come ad esempio la pagina del libro in cui si trova quell'argomento.",
+  "intro_page_five_body": "Premi sul pulsante \"TEST!\" in basso e verrà scelto un argomento. Ora sta a te decidere se il tuo livello di preparazione sull'argomento è soddisfacente.",
+  "intro_page_six_body": "TestMe estrarrà gli argomenti fino a quando non saranno tutti contrassegnati. Ovviamente in ogni momento puoi decidere se contrassegnarli o meno come già affrontati.",
+  "intro_page_six_body2": "Questo è tutto. Buona fortuna!",
+  "intro_page_skip": "Salta",
+  "intro_page_done": "Fatto"
+
+
+
 
 }

@@ -5,6 +5,7 @@ import 'package:feedback/feedback.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:test_me/about_screen.dart';
+import 'package:test_me/onBoarding_one/onboarding_one.dart';
 import 'package:test_me/theme_manager.dart';
 import 'package:toast/toast.dart';
 import 'package:path_provider/path_provider.dart';
@@ -122,6 +123,25 @@ class _InfoPageState extends State<InfoPage> {
                   fontWeight: FontWeight.w800,
                   color: Theme.of(context).primaryColor),
               tiles: [
+                SettingsTile(
+                  title: AppLocalizations.of(context).info_page_setting2_5,
+                  titleTextStyle: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 18,
+                      color: Theme.of(context).accentColor),
+                  leading: Icon(Icons.device_unknown),
+                  onPressed: (BuildContext context) {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => OnBoardingOne(
+                          theme: _theme,
+                        ),
+                      ),
+                      (route) => false,
+                    );
+                  },
+                ),
                 SettingsTile(
                   title: AppLocalizations.of(context).info_page_setting3,
                   titleTextStyle: TextStyle(

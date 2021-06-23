@@ -1,7 +1,7 @@
 {
   "@@locale": "en",
 
-  "testme_master_version_info": "version 0.3.0",
+  "testme_master_version_info": "version 0.4.0",
   "add_row_main_title": "Add Topic",
   "add_row_main_title2": "Update Topic",
   "add_row_text_title_placeholder": "Title",
@@ -38,9 +38,23 @@
   "info_page_section2": "General",
   "info_page_setting1": "Dark theme",
   "info_page_setting2": "Import from .txt file",
+  "info_page_setting2_5": "Watch tutorial",
   "info_page_setting3": "Leave feedback",
   "info_page_setting4": "Info",
   "info_page_toast_not_implemented": "Coming soon!",
   "info_page_about": "TestMe is an open source application developed with Flutter. You can take a look at the source code at github.com/lucamadd/TestMe",
-  "info_page_about_support": "Thank you for downloading TestMe! Ad banners support me, but if you want an ad-free experience you can simply use the app when you're offline."
+  "info_page_about_support": "Thank you for downloading TestMe! Ad banners support me, but if you want an ad-free experience you can simply use the app when you're offline.\n\nIn addition to hiding the ads you'll maintain a higher level of concentration and have fewer distractions.",
+  "intro_page_one_title": "Welcome to TestMe",
+  "intro_page_one_body": "TestMe is your personal assistant that helps you in exams and interviews.\n\nThis short tutorial will help you understand how the app works.",
+  "intro_page_two_body": "You can create a list of topics. Every topic represent a question that could be asked during your exam.",
+  "intro_page_two_body2": "Once finished, TestMe will randomly choose a topic, then you can test your preparation.",
+  "intro_page_three_body": "This is TestMe main page. On the upper side of the screen you can see the total number of topics.",
+  "intro_page_three_body2": "Press the \"+\" button to add a new topic.",
+  "intro_page_four_body": "Every topic has a priority level(high, medium, low). The higher the priority level, the more likely that topic will be chosen.",
+  "intro_page_four_body2": "You can also add a note, e.g. the page where the topic is at.",
+  "intro_page_five_body": "Press the \"TEST!\" button to let TestMe choose a topic. Now it's your time. Is your preparation about this topic any good?",
+  "intro_page_six_body": "TestMe will keep choosing topics until they are all marked. You can mark/unmark them anytime.",
+  "intro_page_six_body2": "That's all. Good luck!",
+  "intro_page_skip": "Skip",
+  "intro_page_done": "Done"
 }
